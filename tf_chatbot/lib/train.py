@@ -6,7 +6,7 @@ import time
 import numpy as np
 import tensorflow as tf
 
-from tf_chatbot.lib.seq2seq_model_util import create_model
+from tf_chatbot.lib.seq2seq_model_utils import create_model
 from tf_chatbot.configs.config import FLAGS, BUCKETS
 from tf_chatbot.lib.data_utils import read_data
 from tf_chatbot.lib import data_utils

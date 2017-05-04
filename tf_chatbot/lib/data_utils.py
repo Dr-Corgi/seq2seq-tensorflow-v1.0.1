@@ -38,7 +38,7 @@ def basic_tokenizer(sentence):
     return [w.lower() for w in words if w]
 
 def create_vocabulary(vocabulary_path, data_path, max_vocabulary_size,
-                      tokenizer=None, normalize_digits=None):
+                      tokenizer=None, normalize_digits=True):
     if not gfile.Exists(vocabulary_path):
         print("Creating vocabulary %s from data %s" % (vocabulary_path, data_path))
         vocab = {}
@@ -83,9 +83,8 @@ def sentence_to_token_ids(sentence, vocabulary,
     else:
         words = basic_tokenizer(sentence)
     if not normalize_digits:
-        return [vocabulary.get(w, _UNK) for w in words]
-        #return [vocabulary.get(w, UNK_ID) for w in words]
-    return [vocabulary.get(re.sub(_DIGIT_RE, "0", w), _UNK) for w in words]
+        return [vocabulary.get(w, UNK_ID) for w in words]
+    return [vocabulary.get(re.sub(_DIGIT_RE, "0", w), UNK_ID) for w in words]
 
 def data_to_token_ids(data_path, target_path, vocabulary_path,
                       tokenizer=None, normalize_digits=True):

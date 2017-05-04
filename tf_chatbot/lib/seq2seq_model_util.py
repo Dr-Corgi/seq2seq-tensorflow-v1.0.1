@@ -38,7 +38,7 @@ def create_model(session, forward_only):
 def get_predicted_sentence(input_sentence, vocab, rev_vocab, model, sess):
     input_token_ids = data_utils.sentence_to_token_ids(input_sentence, vocab)
 
-    bucket_id = min([b for b in xrange(len(BUCKETS)) if BUCKETS[b][0] > len(input_token_ids)])
+    bucket_id = min([b for b in range(len(BUCKETS)) if BUCKETS[b][0] > len(input_token_ids)])
     outputs = []
 
     feed_data = {bucket_id: [(input_token_ids, outputs)]}

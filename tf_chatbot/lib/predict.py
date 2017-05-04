@@ -21,7 +21,7 @@ def predict():
         model = create_model(sess, forward_only=True)
         model.batch_size = 1
 
-        vocab_path = os.path.join(FLAHS.data_dir, "vocab%d.in" % FLAGS.vocab_size)
+        vocab_path = os.path.join(FLAGS.data_dir, "vocab%d.in" % FLAGS.vocab_size)
         vocab, rev_vocab = data_utils.initialize_vocabulary(vocab_path)
 
         test_dataset = _get_test_dataset()

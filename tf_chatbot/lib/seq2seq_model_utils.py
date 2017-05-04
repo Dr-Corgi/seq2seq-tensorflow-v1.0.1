@@ -10,6 +10,8 @@ from tf_chatbot.configs.config import FLAGS, BUCKETS
 from tf_chatbot.lib import data_utils
 from tf_chatbot.lib import seq2seq_model
 
+_INDEX = ".index"
+
 def create_model(session, forward_only):
     model = seq2seq_model.Seq2SeqModel(
         source_vocab_size=FLAGS.vocab_size,
@@ -25,7 +27,7 @@ def create_model(session, forward_only):
         forward_only=forward_only)
 
     ckpt = tf.train.get_checkpoint_state(FLAGS.model_dir)
-    if ckpt and gfile.Exists(ckpt.model_checkpoint_path):
+    if ckpt and gfile.Exists(ckpt.model_checkpoint_path + _INDEX):
         print("Reading model parameters from %s" % ckpt.model_checkpoint_path)
         model.saver.restore(session, ckpt.model_checkpoint_path)
     else:

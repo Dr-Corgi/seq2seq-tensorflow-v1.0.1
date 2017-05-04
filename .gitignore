@@ -1,3 +1,5 @@
 .idea/*
 *.pyc
 __init__.py
+tf_chatbot/data/*
+tf_chatbot/nn_models/*

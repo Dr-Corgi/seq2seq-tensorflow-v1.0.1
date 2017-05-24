@@ -3,4 +3,4 @@
 __init__.py
 tf_chatbot/data/*
 tf_chatbot/nn_models/*
-results/*
+tf_chatbot/results/*
